@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <!--if：移除div  show使用display:none 隐藏div-->
+    <div v-if="flag">hello test</div>
+</div>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            flag: true
+        }
+    })
+</script>
+</body>
+</html>
