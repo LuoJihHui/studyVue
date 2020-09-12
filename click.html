@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -10,7 +10,7 @@
 <body>
 <div id="app">
     <div>{{message.split('').reverse().join('')}}</div>
-    <button v-on:click="reverse">点我反转消息</button>
+    <button :click="reverse">点我反转消息</button>
     <input type="text" v-model="message">
 </div>
 <script>

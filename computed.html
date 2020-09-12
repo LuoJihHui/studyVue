@@ -9,13 +9,41 @@
 </head>
 <body>
 <div id="app">
-    <div>{{a}}</div>
+    <div>{{reverseMessage}}</div>
+    <div>{{reverseMessages()}}</div>
 </div>
 <script>
     let app = new Vue({
         el: '#app',
         data: {
-            a: '<h1>hello v</h1>'
+            message: 'hello'
+        },
+        /**
+         * 每次都获取
+         */
+        methods: {
+            reverseMessages() {
+                return this.message.split('').reverse().join('');
+            }
+        },
+        /**
+         * 值无变化时，将会直接从缓存中获取
+         */
+        computed: {
+            /**
+             * 完整版
+             */
+            reverseMessage: {
+                get() {
+                    return this.message.split('').reverse().join('');
+                }
+            }
+            /**
+             * 简写
+             */
+            /*reverseMessage() {
+                return this.message.split('').reverse().join('');
+            }*/
         }
     });
 
