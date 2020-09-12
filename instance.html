@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <div>{{a}}</div>
+</div>
+<script>
+    let data = {a: 1, b: null};
+    // 调用改方法后视图值不发生变化
+    // Object.freeze(data);
+    let app = new Vue({
+        el: '#app',
+        data: data,
+        created(){
+            console.log("div被创建")
+        }
+    });
+    console.log(data.a === app.a);
+    data.a = 99;
+    console.log(app.a);
+    app.a = 100;
+    console.log(data.a);
+
+    console.log(">>>>>>>>>>>>>>>>>");
+    console.log(app.$el === document.getElementById("app"));
+    console.log(app.$data === data);
+</script>
+</body>
+</html>
