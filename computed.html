@@ -10,13 +10,15 @@
 <body>
 <div id="app">
     <div>{{reverseMessage}}</div>
-    <div>{{reverseMessages()}}</div>
+    <div>{{copyMessage}}</div>
+<!--    <div>{{reverseMessages()}}</div>-->
 </div>
 <script>
     let app = new Vue({
         el: '#app',
         data: {
-            message: 'hello'
+            message: 'hello',
+            copyMessage: null
         },
         /**
          * 每次都获取
@@ -36,6 +38,10 @@
             reverseMessage: {
                 get() {
                     return this.message.split('').reverse().join('');
+                },
+                set(newVal) {
+                    console.log("set方法被调用:" + newVal);
+                    this.copyMessage = newVal;
                 }
             }
             /**
