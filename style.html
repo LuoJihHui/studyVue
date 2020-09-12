@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <div :style="{color:fontColor,fontSize:fontSize+'px'}">{{msg}}</div>
+    <div :style="styleObj">{{msg}}</div>
+    <div :style="[styleObj,styleObj2]">{{msg}}</div>
+</div>
+<script>
+    let app = new Vue({
+        el: '#app',
+        data: {
+            msg: 'hello vue',
+            fontColor: 'yellow',
+            fontSize: 30,
+
+            styleObj: {
+                color: 'yellow',
+                fontSize: '30px',
+            }, styleObj2: {
+                color: 'yellow',
+                fontSize: '30px',
+                border: '1px solid #dedede'
+            }
+        }
+    });
+
+</script>
+<style>
+    .mydiv {
+        font-weight: bold;
+        color: red;
+    }
+
+    .myDiv {
+        font-size: 30px;
+    }
+
+    .myDiv2 {
+        border: 1px solid #dedede;
+    }
+</style>
+</body>
+</html>

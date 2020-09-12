@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <div :class="classObj" class="myDiv">{{msg}}</div>
+    <div :class="[flag ? myDivClass : '',myDivClss2]">{{msg}}</div>
+    <div :class="[ {mydiv:flag},myDivClss2]">{{msg}}</div>
+</div>
+<script>
+    let app = new Vue({
+        el: '#app',
+        data: {
+            msg: 'hello vue',
+            flag: true,
+            hasBorder: true,
+            myDivClass: 'mydiv',
+            myDivClss2: 'myDiv2'
+
+        },
+        computed: {
+            classObj() {
+                return {
+                    mydiv: this.flag,
+                    myDiv2: this.hasBorder
+                }
+            }
+        }
+    });
+
+</script>
+<style>
+    .mydiv {
+        font-weight: bold;
+        color: red;
+    }
+
+    .myDiv {
+        font-size: 30px;
+    }
+
+    .myDiv2 {
+        border: 1px solid #dedede;
+    }
+</style>
+</body>
+</html>

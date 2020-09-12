@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <div>{{fullName}}</div>
+</div>
+<script>
+    let app = new Vue({
+        el: '#app',
+        data: {
+            firstName: 'li',
+            lastName: 'san',
+            fullName: '张三'
+        },
+        /**
+         * 监听器-适用于异步或开销大
+         * @date 2020/9/12 21:42
+         * @author LuoJiaHui
+         * @describe
+         */
+        watch: {
+            firstName(val) {
+                this.fullName = val + ' ' + this.lastName;
+            },
+            lastName(val) {
+                this.fullName = val + '' + this.firstName;
+            }
+        }
+    });
+
+</script>
+</body>
+</html>
