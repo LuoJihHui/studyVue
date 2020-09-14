@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <input type="text" v-model="message">
+    <div>{{message}}</div>
+    <textarea cols="30" rows="10" v-model="textarea"></textarea>
+    <p style="white-space:pre-line ">{{textarea}}</p>
+
+    <hr>
+    <input type="checkbox" v-model="checkBox">
+    <div>{{checkBox}}</div>
+    <hr>
+
+    <input type="checkbox" v-model="favorites" value="足球">足球
+    <input type="checkbox" v-model="favorites" value="篮球">篮球
+    <input type="checkbox" v-model="favorites" value="乒乓球">乒乓球
+    <div>{{favorites}}</div>
+    <hr>
+    性别：<input type="radio" v-model="gender" value="男">男
+    <input type="radio" v-model="gender" value="女">女
+    <div>{{gender}}</div>
+    <hr>
+    学历:<select v-model="edu">
+    <option value="小学">小学</option>
+    <option value="初中">初中</option>
+    <option value="高中">高中</option>
+</select>
+
+    <div>{{edu}}</div>
+    <hr>
+    <select multiple v-model="favorites">
+        <option :key="index" :value="f" v-for="(f,index) in fs">{{f}}</option>
+    </select>
+    <hr>
+
+    <input false-value="no" true-value="yes" type="checkbox" v-model="toggle">
+    <div>{{toggle}}</div>
+    <input type="text" v-model.lazy="message">
+    <div>{{message}}</div>
+</div>
+<script>
+    let app = new Vue({
+        el: '#app',
+        data: {
+            message: 'hello from',
+            textarea: 'hello from textarea',
+            checkBox: false,
+            favorites: [],
+            gender: '',
+            edu: '',
+            fs: [
+                '足球',
+                '篮球',
+                '乒乓球'
+            ],
+            toggle: ''
+        }
+    });
+
+</script>
+</body>
+</html>

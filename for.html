@@ -9,7 +9,8 @@
 </head>
 <body>
 <div id="app">
-    <table border="1">
+    <input type="number" v-model.number="num">
+    <table border="1px solid #dedede">
         <tr v-for="i in num">
             <td v-for="j in i">
                 {{j}}*{{i}}={{j*i}}

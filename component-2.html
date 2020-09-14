@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <luo title="哈哈哈哈"></luo>
+    <luo title="1111"></luo>
+    <log :author="log.author" :date="log.date" :key="index" :title="log.title" @say="hello"
+         v-for="(log,index) in logs">
+        <div style="color: red">hello slot!</div>
+    </log>
+    <hr>
+
+    <comment :is="currentTabComment"></comment>
+</div>
+<script>
+    Vue.component('luo', {
+        data() {
+            return {
+                counter: 0
+            }
+        },
+        props: ['title'],
+        template: '<div><button v-on:click="counter++">hello {{counter}}!</button><div>{{title}}</div></div>'
+    });
+    Vue.component('log', {
+        props: ['title', 'date', 'author'],
+        template: '<div>' +
+            '<div>{{title}}->{{date}}->{{author}}</div>' +
+            '<slot></slot>' +
+            '<button @click="$emit(\'say\',date)">点我</button>' +
+            '</div>'
+    });
+    var app = new Vue({
+        el: '#app',
+        methods: {
+            hello(val) {
+                console.log("hello " + val + "!!!")
+            }
+        },
+        data: {
+            currentTabComment: 'luo',
+            logs: [
+                {
+                    title: "标题1",
+                    date: "2020-09-15",
+                    author: "luojiahui"
+                }, {
+                    title: "标题2",
+                    date: "2020-09-25",
+                    author: "luojiahui"
+                }, {
+                    title: "标题3",
+                    date: "2020-09-30",
+                    author: "luojiahui"
+                },
+            ]
+        }
+    })
+</script>
+</body>
+</html>

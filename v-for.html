@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <table border="1">
+        <tr>
+            <td>循环下标</td>
+            <td>书名</td>
+            <td>作者</td>
+        </tr>
+        <tr :key="index" v-for="(book,index) of books">
+            <td>{{index}}</td>
+            <td>{{book.name}}</td>
+            <td>{{book.author}}</td>
+        </tr>
+    </table>
+    <hr>
+    <div :key="index" v-for="(s,property,index) in site">{{s}}->{{property}}->{{index}}</div>
+</div>
+<script>
+    let app = new Vue({
+        el: '#app',
+        data: {
+            books: [
+                {
+                    name: '三国演义',
+                    author: '罗贯中'
+                }, {
+                    name: '水浒传',
+                    author: '施耐庵'
+                }, {
+                    name: '西游记',
+                    author: '吴承恩'
+                }, {
+                    name: '红楼梦',
+                    author: '曹雪芹'
+                }
+            ],
+            site: {
+                url: 'www.baidu.com',
+                name: '百度',
+                server: '傻逼'
+            }
+        }
+    });
+
+</script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <div v-if='isShow'>hello vue</div>
+    <template v-if="isShow">
+        <p>hello vue2</p>
+        <div>hello luojiahui</div>
+        <span>hello luo</span>
+    </template>
+
+    <div v-else>v-else</div>
+    性别:
+    <div v-if="gender ==0">男</div>
+    <div v-else-if="gender == 1">女</div>
+    <div v-else>未知</div>
+
+    <template v-if="loginType == 'username'">
+        <label>用户名</label>
+        <label>
+            <input key="name" placeholder="请输入用户名" type="text">
+        </label>
+    </template>
+    <template v-else>
+        <label>邮箱</label>
+        <label>
+            <input key="val" placeholder="请输入用户邮箱地址" type="text">
+        </label>
+    </template>
+    <hr>
+    <div v-show="!isHide">hello vue!v-show</div>
+</div>
+<script>
+    let app = new Vue({
+        el: '#app',
+        data: {
+            isShow: false,
+            gender: 0,
+            loginType: 'username',
+            isHide: false
+        }
+    });
+
+</script>
+</body>
+</html>
